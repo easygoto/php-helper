@@ -2,7 +2,7 @@
   "name": "treelink/web-toolkit",
   "type": "library",
   "description": "web 开发时常用工具",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "authors": [
     {
@@ -13,7 +13,11 @@
   ],
   "require": {
     "php": ">=7.4",
-    "ext-json": "*"
+    "ext-curl": "*",
+    "ext-gd": "*",
+    "ext-json": "*",
+    "ext-simplexml": "*",
+    "symfony/polyfill": "^1.23"
   },
   "autoload": {
     "psr-4": {

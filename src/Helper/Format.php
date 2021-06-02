@@ -5,7 +5,7 @@ namespace Trink\Core\Helper;
 /**
  * Class Format
  * @package Trink\Core\Helper
- * @author trink
+ * @author  trink
  */
 class Format
 {
@@ -33,10 +33,18 @@ class Format
      */
     public static function toUnderScore($words, string $separator = '_'): string
     {
-        return strtolower(preg_replace('/([a-z])([A-Z])/', "$1" . $separator . "$2", $words));
+        return strtolower(preg_replace('/([a-z])?([A-Z])/', "$1" . $separator . "$2", $words));
     }
 
-    public static function array2CamelCase($list, $separator = '_'): array
+    /**
+     * 数组所有下划线名转驼峰
+     *
+     * @param array  $list
+     * @param string $separator
+     *
+     * @return array
+     */
+    public static function array2CamelCase(array $list, string $separator = '_'): array
     {
         $temp = [];
         foreach ($list as $key => $value) {
@@ -49,7 +57,15 @@ class Format
         return $temp;
     }
 
-    public static function array2UnderScore($list, $separator = '_'): array
+    /**
+     * 数组所有驼峰命名转下划线
+     *
+     * @param array  $list
+     * @param string $separator
+     *
+     * @return array
+     */
+    public static function array2UnderScore(array $list, string $separator = '_'): array
     {
         $temp = [];
         foreach ($list as $key => $value) {

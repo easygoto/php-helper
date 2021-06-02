@@ -119,7 +119,7 @@ class Result
      */
     public function setDataByKey(string $key, $data): Result
     {
-        $this->data = Arrays::set($this->data, $key, $data);
+        $this->data = (array)Arrays::set($this->data, $key, $data);
         return $this;
     }
 

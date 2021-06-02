@@ -7,7 +7,7 @@ use Exception;
 /**
  * Class Show
  * @package Trink\Core\Helper
- * @author trink
+ * @author  trink
  */
 class Show
 {
@@ -20,6 +20,11 @@ class Show
     public const CLI_COLOR_DARK_GREEN = 36;
     public const CLI_COLOR_WHITE = 37;
 
+    /**
+     * 简版的时间分析
+     *
+     * @param callable|null $callback
+     */
     public static function timer(?callable $callback = null): void
     {
         $start = microtime(true);
@@ -27,6 +32,11 @@ class Show
         self::println('runtime : ' . (microtime(true) - $start) * 1000 . ' ms');
     }
 
+    /**
+     * 打印数据, 不带回车
+     *
+     * @param $data
+     */
     public static function print($data): void
     {
         if (is_array($data) || is_object($data)) {
@@ -41,6 +51,11 @@ class Show
         }
     }
 
+    /**
+     * 打印数据, 带回车
+     *
+     * @param $data
+     */
     public static function println($data): void
     {
         if (false !== stripos(PHP_SAPI, "cli")) {
@@ -54,6 +69,8 @@ class Show
     }
 
     /**
+     * 带有颜色的命令行打印信息
+     *
      * @param int          $color 可以使用预设的 Logger::CLI_COLOR 设置
      * @param string       $title 提示信息
      * @param string|array $desc  提示信息详情
