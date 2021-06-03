@@ -71,7 +71,7 @@ class Show
     /**
      * 带有颜色的命令行打印信息
      *
-     * @param int          $color 可以使用预设的 Logger::CLI_COLOR 设置
+     * @param int          $color 可以使用预设的 CLI_COLOR 设置
      * @param string       $title 提示信息
      * @param string|array $desc  提示信息详情
      */

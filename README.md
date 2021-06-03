@@ -1,13 +1,3 @@
-# 概览
-
-## 项目结构
-
-- src
-  - Container : 加载和提供组件服务
-  - Component : 常使用的组件库(PSR 及其扩展)
-  - Helper : 项目中常用到的工具集
-- tests : 测试用例
-
 # Helper
 
 ## 业务返回结果 Result
@@ -36,3 +26,10 @@
 
 - [x] xml 转数组
 
+## GD 处理相关 Image
+
+- [x] 缩放
+- [x] 裁切
+- [x] 加水印
+
+## http 请求相关 Curl

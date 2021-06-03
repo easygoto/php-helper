@@ -1,8 +1,8 @@
 {
-  "name": "treelink/web-toolkit",
+  "name": "treelink/helper",
   "type": "library",
-  "description": "web 开发时常用工具",
-  "version": "1.0.1",
+  "description": "PHP 开发时常用的工具",
+  "version": "1.0.2",
   "license": "MIT",
   "authors": [
     {
