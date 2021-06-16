@@ -2,7 +2,6 @@
 
 namespace Tests\Core\Helper;
 
-use Tests\Core\BaseTest;
 use Trink\Core\Helper\Result;
 use Trink\Core\Helper\Show;
 
