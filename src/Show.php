@@ -44,7 +44,7 @@ class Show
         $msg = '';
         if (is_array($data) || is_object($data)) {
             try {
-                $msg = json_encode($data, JSON_THROW_ON_ERROR);
+                $msg = json_encode($data, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
             } catch (Exception $e) {
             }
         } elseif (is_bool($data) || is_resource($data)) {
