@@ -33,13 +33,13 @@ class Show
     }
 
     /**
-     * 打印数据, 不带回车
+     * 转成字符串
      *
-     * @param $data
+     * @param      $data
      *
      * @return string
      */
-    public static function print($data): string
+    public static function toStr($data): string
     {
         $msg = '';
         if (is_array($data) || is_object($data)) {
@@ -52,19 +52,17 @@ class Show
         } else {
             $msg = sprintf("%s", $data);
         }
-
-        print $msg;
         return $msg ?? '';
     }
 
     /**
-     * 打印数据, 带回车
+     * 转成字符串(带回车)
      *
-     * @param $data
+     * @param      $data
      *
      * @return string
      */
-    public static function println($data): string
+    public static function toLnStr($data): string
     {
         if (false !== stripos(PHP_SAPI, "cli")) {
             $endLine = PHP_EOL;
@@ -72,9 +70,69 @@ class Show
             $endLine = '<br>';
         }
 
-        $msg = self::print($data);
-        print $endLine;
-        return $msg . $endLine;
+        return static::toStr($data) . $endLine;
+    }
+
+    /**
+     * 打印数据, 不带回车
+     *
+     * @param $data
+     *
+     * @return void
+     */
+    public static function print($data): void
+    {
+        print static::toStr($data);
+    }
+
+    /**
+     * 打印数据, 带回车
+     *
+     * @param $data
+     *
+     * @return void
+     */
+    public static function println($data): void
+    {
+        print static::toLnStr($data);
+    }
+
+    /**
+     * 转成带有颜色的命令行字符串
+     *
+     * @param int          $color
+     * @param string       $title
+     * @param string|array $desc
+     *
+     * @return string
+     */
+    public static function toCliStr(int $color, string $title, $desc = ''): string
+    {
+        $title = sprintf('%-20s', $title);
+        if (is_string($desc)) {
+            $msg = "\e[{$color}m$title\t\e[0m$desc";
+        } elseif (is_array($desc)) {
+            $blank = sprintf('%-20s', '');
+            $message = implode("\n$blank\t", $desc);
+            $msg = "\e[{$color}m$title\t\e[0m$message";
+        } else {
+            $msg = "\e[{$color}m$title\t\e[0m";
+        }
+        return $msg;
+    }
+
+    /**
+     * 转成带有颜色的命令行字符串(带有回车)
+     *
+     * @param int          $color
+     * @param string       $title
+     * @param string|array $desc
+     *
+     * @return string
+     */
+    public static function toCliLnStr(int $color, string $title, $desc = ''): string
+    {
+        return static::toCliStr($color, $title, $desc) . "\n";
     }
 
     /**
@@ -84,21 +142,10 @@ class Show
      * @param string       $title 提示信息
      * @param string|array $desc  提示信息详情
      *
-     * @return string
+     * @return void
      */
-    public static function cliLn(int $color, string $title, $desc = ''): string
+    public static function cliLn(int $color, string $title, $desc = ''): void
     {
-        $title = sprintf('%-20s', $title);
-        if (is_string($desc)) {
-            $msg = "\e[{$color}m$title\t\e[0m$desc\n";
-        } elseif (is_array($desc)) {
-            $blank = sprintf('%-20s', '');
-            $message = implode("\n$blank\t", $desc);
-            $msg = "\e[{$color}m$title\t\e[0m$message\n";
-        } else {
-            $msg = "\e[{$color}m$title\t\e[0m\n";
-        }
-        print $msg;
-        return $msg;
+        print static::toCliLnStr($color, $title, $desc);
     }
 }
