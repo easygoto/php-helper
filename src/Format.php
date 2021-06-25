@@ -33,7 +33,8 @@ class Format
      */
     public static function toUnderScore($words, string $separator = '_'): string
     {
-        return strtolower(preg_replace('/([a-z])?([A-Z])/', "$1" . $separator . "$2", $words));
+        $str = strtolower(preg_replace('/([a-z])?([A-Z])/', "$1" . $separator . "$2", $words));
+        return trim($str, $separator);
     }
 
     /**
