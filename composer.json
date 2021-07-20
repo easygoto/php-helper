@@ -2,7 +2,7 @@
   "name": "treelink/helper",
   "type": "library",
   "description": "PHP 开发时常用的工具",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "license": "MIT",
   "authors": [
     {
@@ -16,8 +16,7 @@
     "ext-curl": "*",
     "ext-gd": "*",
     "ext-json": "*",
-    "ext-simplexml": "*",
-    "symfony/polyfill": "^1.23"
+    "ext-simplexml": "*"
   },
   "autoload": {
     "psr-4": {

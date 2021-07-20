@@ -24,8 +24,8 @@ class Result
     /** @var array $debug 错误处理 */
     protected array $debug = [];
 
-    public const STATUS_SUCCESS = 1;
-    public const STATUS_ERROR = 0;
+    public const STATUS_SUCCESS = 0;
+    public const STATUS_ERROR = -1;
 
     /**
      * @param string $msg

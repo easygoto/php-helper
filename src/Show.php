@@ -108,17 +108,20 @@ class Show
      */
     public static function toCliStr(int $color, string $title, $desc = ''): string
     {
-        $title = sprintf('%-20s', $title);
-        if (is_string($desc)) {
-            $msg = "\e[{$color}m$title\t\e[0m$desc";
-        } elseif (is_array($desc)) {
-            $blank = sprintf('%-20s', '');
-            $message = implode("\n$blank\t", $desc);
-            $msg = "\e[{$color}m$title\t\e[0m$message";
-        } else {
-            $msg = "\e[{$color}m$title\t\e[0m";
+        if ($desc) {
+            $title = sprintf('%-20s', $title);
+            if (is_string($desc)) {
+                return "\e[{$color}m$title\e[0m\t$desc";
+            }
+
+            if (is_array($desc)) {
+                $blank = sprintf('%-20s', '');
+                $message = implode("\n$blank\t", $desc);
+                return "\e[{$color}m$title\e[0m\t$message";
+            }
         }
-        return $msg;
+
+        return "\e[{$color}m$title\e[0m";
     }
 
     /**

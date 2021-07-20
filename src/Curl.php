@@ -30,10 +30,11 @@ class Curl
         return $res;
     }
 
-    public static function get($url, $data = '', &$httpCode = 200)
+    public static function get($url, $data = '', $headers = [], &$httpCode = 200)
     {
         $ch = curl_init($url . '?' . $data);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         $res = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
         curl_close($ch);
