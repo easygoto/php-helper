@@ -4,7 +4,7 @@ namespace Trink\Core\Helper;
 
 class Curl
 {
-    public static function head($url = '', &$httpCode = 200)
+    public static function head($url, &$httpCode = 200)
     {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'HEAD');

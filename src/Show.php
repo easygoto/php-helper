@@ -33,6 +33,19 @@ class Show
     }
 
     /**
+     * 换行符
+     * @return string
+     */
+    public static function endLine(): string
+    {
+        if (false !== stripos(PHP_SAPI, "cli")) {
+            return PHP_EOL;
+        }
+
+        return '<br>';
+    }
+
+    /**
      * 转成字符串
      *
      * @param      $data
@@ -52,7 +65,7 @@ class Show
         } else {
             $msg = sprintf("%s", $data);
         }
-        return $msg ?? '';
+        return $msg;
     }
 
     /**
@@ -64,13 +77,7 @@ class Show
      */
     public static function toLnStr($data): string
     {
-        if (false !== stripos(PHP_SAPI, "cli")) {
-            $endLine = PHP_EOL;
-        } else {
-            $endLine = '<br>';
-        }
-
-        return static::toStr($data) . $endLine;
+        return static::toStr($data) . static::endLine();
     }
 
     /**

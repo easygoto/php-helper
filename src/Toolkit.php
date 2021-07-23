@@ -27,4 +27,22 @@ class Toolkit
             'trace' => $trace,
         ];
     }
+
+    /**
+     * 压缩 html (去除无用的代码)
+     *
+     * @param $html
+     *
+     * @return string
+     */
+    public function compressHtml($html): string
+    {
+        return trim(
+            preg_replace(
+                ["/> *([^ ]*) *</", "/[\s]+/", "/<!--[^!]*-->/", "/\" /", "/ \"/", "'/\*[^*]*\*/'"],
+                [">\\1<", " ", "", "\"", "\"", ""],
+                $html
+            )
+        );
+    }
 }
